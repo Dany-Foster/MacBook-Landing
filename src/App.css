@@ -89,7 +89,7 @@ body {
 
 @layer components {
   header {
-    @apply w-screen fixed top-0 left-0 z-50 flex-center bg-black min-h-[7vh];
+    @apply w-full fixed top-0 left-0 z-50 flex-between bg-black min-h-[7vh] lg:px-8;
 
     nav {
       @apply container mx-auto flex-between px-5 2xl:px-0;
@@ -113,13 +113,13 @@ body {
   }
 
   #hero {
-    @apply h-fit lg:h-[80vh] col-center mt-40 lg:mt-20 2xl:mt-[7vh];
+    @apply h-fit lg:min-h-[80vh] col-center mt-40 lg:mt-20 2xl:mt-[7vh];
 
     div {
       @apply relative z-10 col-center lg:translate-y-16;
 
       h1 {
-        @apply font-semibold lg:text-3xl 2xl:text-5xl text-white;
+        @apply font-semibold lg:text-3xl  text-white;
       }
 
       img {
