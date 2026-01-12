@@ -45,14 +45,14 @@
   --color-light-100: #adb5bd;
 }
 
-html {
+/* html {
   width: 100vw;
   overflow-x: hidden;
   scroll-behavior: smooth;
-}
+} */
 
 body {
-  width: 100vw;
+  /* width: 100vw; */
   overflow-x: hidden;
   background-color: #000;
   color: var(--color-dark-100);
@@ -89,7 +89,7 @@ body {
 
 @layer components {
   header {
-    @apply w-full fixed top-0 left-0 z-50 flex-between bg-black min-h-[7vh] lg:px-8;
+    @apply w-screen fixed top-0 left-0 z-50 flex-center bg-black min-h-[7vh] px-8;
 
     nav {
       @apply container mx-auto flex-between px-5 2xl:px-0;
@@ -113,13 +113,13 @@ body {
   }
 
   #hero {
-    @apply h-fit lg:min-h-[80vh] col-center mt-40 lg:mt-20 2xl:mt-[7vh];
+    @apply w-full h-fit lg:min-h-[80vh] col-center mt-40 lg:mt-20 2xl:mt-[7vh] px-8;
 
     div {
       @apply relative z-10 col-center lg:translate-y-16;
 
       h1 {
-        @apply font-semibold lg:text-3xl  text-white;
+        @apply font-semibold lg:text-3xl 2xl:text-5xl text-white;
       }
 
       img {
@@ -141,7 +141,7 @@ body {
   }
 
   #product-viewer {
-    @apply container relative min-h-[93vh] mx-auto px-5 2xl:px-0 mt-40;
+    @apply container relative min-h-[93vh] mx-auto px-8 mt-40;
 
     h2 {
       @apply text-white font-semibold text-3xl lg:text-6xl;
@@ -170,7 +170,7 @@ body {
         @apply small-medium flex-between bg-neutral-800 rounded-full px-6 py-2.5 gap-2;
 
         div {
-          @apply size-8 rounded-full cursor-pointer bg-white text-black flex-center;
+          @apply size-8 rounded-full cursor-pointer text-center flex-center;
         }
       }
     }
