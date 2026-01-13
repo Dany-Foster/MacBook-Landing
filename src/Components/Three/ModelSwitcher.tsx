@@ -2,17 +2,18 @@ import { useGSAP } from "@gsap/react";
 import { PresentationControls } from "@react-three/drei";
 import gsap from "gsap";
 import { useRef } from "react";
+import * as THREE from "three";
 import MacBookModels14 from "../models/Macbook-14";
 import { MacBookModels16 } from "../models/Macbook-16";
 
 const ANIMATION_DURATION = 1;
 const OFFSET_MESH = 5;
 
-const fadeMesh = (group, opacity) => {
+const fadeMesh = (group: THREE.Group | null, opacity: number) => {
   if (!group) return;
 
   group.traverse((child) => {
-    if (child.isMesh) {
+    if (child instanceof THREE.Mesh) {
       child.material.transparent = true;
       gsap.to(child.material, {
         opacity,
@@ -37,10 +38,13 @@ const ModelSwitcher = ({
   scale: number;
   isMobile: boolean;
 }) => {
-  const smallMacBookRef = useRef(null);
-  const largeMacBookRef = useRef(null);
+  const smallMacBookRef = useRef<THREE.Group | null>(null);
+  const largeMacBookRef = useRef<THREE.Group | null>(null);
 
-  const ShowLargeMacBook = scale === 0.08 || scale === 0.05;
+  const SCALE_DESKTOP = 0.08;
+  const SCALE_MOBILE = 0.05;
+
+  const ShowLargeMacBook = scale === SCALE_DESKTOP || scale === SCALE_MOBILE;
 
   useGSAP(() => {
     if (ShowLargeMacBook) {
@@ -58,12 +62,14 @@ const ModelSwitcher = ({
     }
   }, [scale]);
 
+  const tuple = <T extends [number, number]>(v: T) => v;
+
   const controlsConfig = {
     snap: true,
     speed: 1,
     zoom: 1,
-    azimuth: [-Infinity, Infinity],
-    polar: [-Math.PI, Math.PI],
+    azimuth: tuple([-Infinity, Infinity]),
+    polar: tuple([-Math.PI, Math.PI]),
     config: { mass: 1, tension: 0, friction: 26 },
   };
 

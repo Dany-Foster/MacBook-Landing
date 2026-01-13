@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 const Couverture = () => {
-  const videoRef = useRef<HTMLVideoElement>();
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     if (videoRef.current) {

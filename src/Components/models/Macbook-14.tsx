@@ -70,13 +70,13 @@ export default function MacBookModels14(props: JSX.IntrinsicElements["group"]) {
 
   useEffect(() => {
     scene.traverse((child) => {
-      if (child.isMesh) {
+      if (child instanceof THREE.Mesh) {
         if (!noChangeParts.includes(child.name)) {
           child.material.color = new THREE.Color(color);
         }
       }
     });
-  }, [color]);
+  }, [color, scene]);
 
   return (
     <group {...props} dispose={null}>
