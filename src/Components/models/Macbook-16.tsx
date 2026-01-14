@@ -9,7 +9,7 @@ Title: macbook pro M3 16 inch 2024
 */
 
 import { useGLTF, useTexture } from "@react-three/drei";
-import { useEffect, type JSX } from "react";
+import { useEffect, useMemo, type JSX } from "react";
 import * as THREE from "three";
 import type { GLTF } from "three-stdlib";
 import useMacBookStore from "../../Hooks/useMAcBookStore";
@@ -67,7 +67,14 @@ export function MacBookModels16(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials, scene } = useGLTF(
     "/models/macbook-16-transformed.glb"
   ) as unknown as GLTFResult;
-  const texture = useTexture("screen.png");
+  const RAWtexture = useTexture("screen.png");
+
+  const texture = useMemo(() => {
+    const text = RAWtexture.clone();
+    text.colorSpace = THREE.SRGBColorSpace;
+    text.needsUpdate = true;
+    return text;
+  }, [RAWtexture]);
 
   useEffect(() => {
     scene.traverse((child) => {
@@ -166,11 +173,7 @@ export function MacBookModels16(props: JSX.IntrinsicElements["group"]) {
         material={materials.JvMFZolVCdpPqjj}
         rotation={[Math.PI / 2, 0, 0]}
       />
-      <mesh
-        geometry={nodes.Object_123.geometry}
-        material={materials.sfCQkHOWyrsLmor}
-        rotation={[Math.PI / 2, 0, 0]}
-      >
+      <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]}>
         <meshStandardMaterial map={texture} />
       </mesh>
       <mesh
