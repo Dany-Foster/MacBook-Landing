@@ -9,7 +9,7 @@ Title: macbook pro M3 16 inch 2024
 */
 
 import { useGLTF, useTexture } from "@react-three/drei";
-import { useEffect, type JSX } from "react";
+import { useEffect, useMemo, type JSX } from "react";
 import * as THREE from "three";
 import type { GLTF } from "three-stdlib";
 import useMacBookStore from "../../Hooks/useMAcBookStore";
@@ -66,17 +66,28 @@ export default function MacBookModels14(props: JSX.IntrinsicElements["group"]) {
     "/models/macbook-14-transformed.glb"
   ) as unknown as GLTFResult;
   const { color } = useMacBookStore();
-  const texture = useTexture("/screen.png");
+  const RAWtexture = useTexture("/screen.png");
+  const texture = useMemo(() => {
+    const text = RAWtexture.clone();
+    text.colorSpace = THREE.SRGBColorSpace;
+    text.needsUpdate = true;
+    return text;
+  }, [RAWtexture]);
 
   useEffect(() => {
     scene.traverse((child) => {
-      if (child.isMesh) {
+      if (child instanceof THREE.Mesh) {
         if (!noChangeParts.includes(child.name)) {
+          if (!child.userData.materialCloned) {
+            child.material = child.material.clone();
+            child.userData.materialCloned = true;
+          }
           child.material.color = new THREE.Color(color);
+          child.material.needsUpdate = true;
         }
       }
     });
-  }, [color]);
+  }, [color, scene]);
 
   return (
     <group {...props} dispose={null}>
@@ -165,11 +176,7 @@ export default function MacBookModels14(props: JSX.IntrinsicElements["group"]) {
         material={materials.JvMFZolVCdpPqjj}
         rotation={[Math.PI / 2, 0, 0]}
       />
-      <mesh
-        geometry={nodes.Object_123.geometry}
-        material={materials.sfCQkHOWyrsLmor}
-        rotation={[Math.PI / 2, 0, 0]}
-      >
+      <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]}>
         <meshBasicMaterial map={texture} />
       </mesh>
       <mesh

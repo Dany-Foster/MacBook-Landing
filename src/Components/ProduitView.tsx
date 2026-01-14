@@ -26,11 +26,8 @@ const ProduitView = () => {
               )}
             />
             <div
-              onClick={() => setColor("#2e2c2e")}
-              className={clsx(
-                "bg-neutral-900",
-                color === "#2e2c2e" && "active"
-              )}
+              onClick={() => setColor("#777")}
+              className={clsx("bg-neutral-500", color === "#777" && "active")}
             />
           </div>
           <div className="size-control">

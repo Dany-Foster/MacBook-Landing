@@ -3,6 +3,7 @@ import { ScrollTrigger, SplitText } from "gsap/all";
 import Couverture from "./Components/Couverture";
 import Navbar from "./Components/Navbar";
 import ProduitView from "./Components/ProduitView";
+import Showcase from "./Components/showcase/Showcase";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Navbar />
       <Couverture />
       <ProduitView />
+      <Showcase />
     </main>
   );
 }
