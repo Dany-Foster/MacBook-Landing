@@ -191,7 +191,7 @@ body {
       }
 
       .mask {
-        @apply absolute h-full top-0 lg:-top-20 xl:top-0;
+        @apply absolute h-full top-0 left-0 lg:-top-20 xl:top-0;
 
         img {
           @apply h-full scale-150 lg:scale-100;
@@ -262,7 +262,7 @@ body {
       }
 
       .p7 {
-        @apply absolute bottom-[5%] left-[15%] z-[3] max-sm:left-[35%];
+        @apply absolute bottom-[5%] left-[15%] z-[3] max-sm:left-[32%];
       }
     }
 
@@ -283,7 +283,7 @@ body {
     }
 
     #f-canvas {
-      @apply !w-full !h-dvh relative z-40;
+      @apply w-full! h-dvh! relative z-40;
     }
 
     .box {
