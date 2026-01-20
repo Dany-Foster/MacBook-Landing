@@ -78,12 +78,7 @@ export default function MacBookModels14(props: JSX.IntrinsicElements["group"]) {
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
         if (!noChangeParts.includes(child.name)) {
-          if (!child.userData.materialCloned) {
-            child.material = child.material.clone();
-            child.userData.materialCloned = true;
-          }
           child.material.color = new THREE.Color(color);
-          child.material.needsUpdate = true;
         }
       }
     });
