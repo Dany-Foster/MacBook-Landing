@@ -112,7 +112,6 @@ const ModelScroll = () => {
     </group>
   );
 };
-
 const Features = () => {
   return (
     <section id="features">
