@@ -1,5 +1,4 @@
 import { useGSAP } from "@gsap/react";
-import { Html } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import clsx from "clsx";
 import gsap from "gsap";
@@ -98,15 +97,8 @@ const ModelScroll = () => {
       });
   }, []);
 
-  return (
     <group ref={groupRef}>
-      <Suspense
-        fallback={
-          <Html center>
-            <h1 className="text-white text-3xl">Loading...</h1>
-          </Html>
-        }
-      >
+      <Suspense>
         <MaccBook scale={isMobile ? 0.05 : 0.08} position={[0, -1, 0]} />
       </Suspense>
     </group>

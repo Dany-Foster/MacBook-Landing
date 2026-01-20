@@ -13,16 +13,16 @@ const ProduitView = () => {
       <h2>Take a closer look. </h2>
 
       <div className="controls">
-        <p className="info">
+        {/* <p className="info">
           Macbook Pro available in 14" and 16" in Space Gray and Black
-        </p>
+        </p> */}
         <div className="flex-center gap-5 mt-5">
           <div className="color-control">
             <div
               onClick={() => setColor("#adb5bd")}
               className={clsx(
                 "bg-neutral-300",
-                color === "#adb5bd" && "active"
+                color === "#adb5bd" && "active",
               )}
             />
             <div
@@ -36,7 +36,7 @@ const ProduitView = () => {
               className={clsx(
                 scale === 0.08
                   ? "bg-white text-black"
-                  : "bg-transparent text-white"
+                  : "bg-transparent text-white",
               )}
             >
               <p>16"</p>
@@ -46,7 +46,7 @@ const ProduitView = () => {
               className={clsx(
                 scale === 0.06
                   ? "bg-white text-black"
-                  : "bg-transparent text-white"
+                  : "bg-transparent text-white",
               )}
             >
               <p>14"</p>
